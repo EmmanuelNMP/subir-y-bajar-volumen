@@ -1,20 +1,24 @@
 input.onButtonPressed(Button.A, function () {
-    contador += -1
-    vol += -51
-    music.setVolume(vol)
-    for (let index = 0; index <= 4; index++) {
-        led.unplot(x, index)
+    if (contador > 0) {
+        contador += -1
+        vol += -51
+        music.setVolume(vol)
+        for (let index = 0; index <= 4; index++) {
+            led.unplot(x, index)
+        }
+        x += -1
     }
-    x += -1
 })
 input.onButtonPressed(Button.B, function () {
-    vol += 51
-    music.setVolume(vol)
-    x += 1
-    for (let index = 0; index <= contador; index++) {
-        led.plot(x, y - index)
+    if (contador <= 4) {
+        vol += 51
+        music.setVolume(vol)
+        x += 1
+        for (let index = 0; index <= contador; index++) {
+            led.plot(x, y - index)
+        }
+        contador += 1
     }
-    contador += 1
 })
 let contador = 0
 let y = 0
